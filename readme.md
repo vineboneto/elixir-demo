@@ -15,3 +15,10 @@ $ mix deps.get
 ```shell
 $ mix test
 ```
+
+## Úteis
+```shell
+# gera arquivo de config do credo
+$ mix credo gen.config
+```
+
