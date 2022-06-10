@@ -1,11 +1,11 @@
-defmodule ReportsGenerator.MixProject do
+defmodule ReportGenerator.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :reports_generator,
+      app: :help,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -21,7 +21,7 @@ defmodule ReportsGenerator.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      # {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 end
