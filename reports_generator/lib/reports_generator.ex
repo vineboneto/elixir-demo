@@ -44,7 +44,7 @@ defmodule ReportsGenerator do
   end
 
   defp sum_values([id, food_name, price], %{"foods" => foods, "users" => users} = report) do
-    users = Map.put(users, id, users[id] + price)
+    users = Map.put(users, id, users[c] + price)
     foods = Map.put(foods, food_name, foods[food_name] + 1)
 
     report

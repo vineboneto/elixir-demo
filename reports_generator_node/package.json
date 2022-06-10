@@ -5,5 +5,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.41"
+  },
+  "dependencies": {
+    "multistream": "^4.1.0"
   }
 }

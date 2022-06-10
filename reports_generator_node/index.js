@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const multi = require("multistream");
 
 // Setup
-const absolutePath = path.join(__dirname, "reports");
-const reportCompleted = path.join(absolutePath, "report_complete.csv");
+const reportCompleted = path.join("reports", "report_complete.csv");
 const reports = ["report_1.csv", "report_2.csv", "report_3.csv"];
 const availableFoods = [
   "açaí",
@@ -54,7 +54,6 @@ function parserFile(path) {
         const [id, food, price] = line.trim().split(",");
         dataset.push({ id, food, price: Number(price) });
       });
-
       resolve(dataset);
     });
   });
@@ -65,17 +64,21 @@ async function mainReportCompleted() {
   const dataset = await parserFile(reportCompleted);
   const users = sumUsers(dataset);
   const foods = sumFoods(dataset);
+  console.log(users);
+  console.log(foods);
   console.timeEnd("Read files completed");
 }
 
 async function mainReportParsed() {
   console.time("Read files parsed");
   const promises = reports.map((report) =>
-    parserFile(path.join(absolutePath, report))
+    parserFile(path.join("reports", report))
   );
   const datasets = (await Promise.all(promises)).flat();
   const users = sumUsers(datasets);
   const foods = sumFoods(datasets);
+  console.log(users);
+  console.log(foods);
   console.timeEnd("Read files parsed");
 }
 
