@@ -9,14 +9,18 @@ const setup = {
   foods: ['açaí', 'churrasco', 'esfirra', 'hambúrguer', 'pastel', 'pizza', 'prato_feito', 'sushi'],
 }
 
+function display(users, foods) {
+  console.log(users)
+  console.log(foods)
+}
+
 async function mainReportCompleted() {
   console.time('Read files completed')
   const dataset = await parserFile(setup.completed)
   const users = sumUsers(dataset, setup.users)
   const foods = sumFoods(dataset, setup.foods)
   console.timeEnd('Read files completed')
-  console.log(users)
-  console.log(foods)
+  display(users, foods)
 }
 
 async function mainReportParsed() {
@@ -25,8 +29,7 @@ async function mainReportParsed() {
   const users = sumUsers(dataset, setup.users)
   const foods = sumFoods(dataset, setup.foods)
   console.timeEnd('Read files parsed')
-  console.log(users)
-  console.log(foods)
+  display(users, foods)
 }
 
 mainReportCompleted()
