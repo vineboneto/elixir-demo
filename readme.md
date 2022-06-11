@@ -44,3 +44,7 @@ $ mix credo gen.config
 
 - Lendo arquivo "reports_complete.csv" => 487.936ms
 - Lendo arquivos (`multithread`) "reports_1.csv", "reports_2.csv", "reports_3.csv" => 202.854ms
+
+**Python**
+
+- Lendo arquivo "reports_complete.csv" => 193.236ms

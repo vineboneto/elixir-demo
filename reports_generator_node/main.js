@@ -15,6 +15,8 @@ async function mainReportCompleted() {
   const users = sumUsers(dataset, setup.users)
   const foods = sumFoods(dataset, setup.foods)
   console.timeEnd('Read files completed')
+  console.log(users)
+  console.log(foods)
 }
 
 async function mainReportParsed() {
@@ -23,6 +25,8 @@ async function mainReportParsed() {
   const users = sumUsers(dataset, setup.users)
   const foods = sumFoods(dataset, setup.foods)
   console.timeEnd('Read files parsed')
+  console.log(users)
+  console.log(foods)
 }
 
 mainReportCompleted()
