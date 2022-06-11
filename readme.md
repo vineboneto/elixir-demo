@@ -37,8 +37,8 @@ $ mix credo gen.config
 
 **Node**
 
-- Lendo arquivo "reports_complete.csv" => 353.304ms
-- Lendo arquivos "reports_1.csv", "reports_2.csv", "reports_3.csv" => 370.126ms
+- Lendo arquivo (`event_loop`) "reports_complete.csv" => 353.304ms
+- Lendo arquivos (`event_loop`) "reports_1.csv", "reports_2.csv", "reports_3.csv" => 370.126ms
 
 **Elixir**
 
