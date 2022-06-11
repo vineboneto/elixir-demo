@@ -1,22 +1,17 @@
 const fs = require("fs");
 const path = require("path");
+const { promisify } = require("util");
+
+const readFileAsync = promisify(fs.readFile);
 
 async function parserFile(path) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, "utf8", (err, data) => {
-      if (err) {
-        console.error(err);
-        reject(err);
-      }
-      const lines = data.split(/\r?\n/);
-      const dataset = [];
-      lines.forEach((line) => {
-        const [id, food, price] = line.trim().split(",");
-        dataset.push({ id, food, price: Number(price) });
-      });
-      resolve(dataset);
-    });
+  const content = await readFileAsync(path, "utf-8");
+  const lines = content.split(/\r?\n/);
+  const parser = lines.map((line) => {
+    const [id, food, price] = line.trim().split(",");
+    return { id, food, price: Number(price) };
   });
+  return parser;
 }
 
 async function parserFiles(paths) {

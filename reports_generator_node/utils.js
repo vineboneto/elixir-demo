@@ -22,7 +22,4 @@ function sumUsers(dataset, users) {
   });
 }
 
-module.exports = {
-  sumUsers,
-  sumFoods,
-};
+module.exports = { sumUsers, sumFoods };
