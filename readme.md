@@ -35,6 +35,8 @@ $ mix credo gen.config
 
 ## Realizando relatório em Arquivo CSV
 
+> ReportsComplete's, Reports...N
+
 **Node**
 
 - Lendo arquivo (`event_loop`) "reports_complete.csv" => 353.304ms
@@ -48,3 +50,9 @@ $ mix credo gen.config
 **Python**
 
 - Lendo arquivo "reports_complete.csv" => 193.236ms
+
+> GenReport
+
+**Elixir**
+
+-- Lendo arquivo "gen_report.csv" => 104.448ms

@@ -63,4 +63,6 @@ O relatório gerado a partir do arquivo (que está disponível para download log
 ```bash
 $ GenReportElixir.build("gen_report.csv")
 $ GenReportElixir.build("gen_report_test.csv")
+
+$ :timer.tc(fn -> GenReportElixir.build("gen_report.csv") end)
 ```
