@@ -21,7 +21,14 @@ defmodule GenReportElixir do
     Enum.reduce(lines, report_acc(lines), fn line, report -> sum_values(line, report) end)
   end
 
-  defp sum_values([name, hours, _day, month, year], %{"all_hours" => all_hours, "hours_per_month" => hours_per_month, "hours_per_year" => hours_per_year} = report) do
+  defp sum_values(
+         [name, hours, _day, month, year],
+         %{
+           "all_hours" => all_hours,
+           "hours_per_month" => hours_per_month,
+           "hours_per_year" => hours_per_year
+         } = report
+       ) do
     all_hours = Map.put(all_hours, name, all_hours[name] + hours)
 
     month = Enum.at(@months, month - 1)
@@ -60,5 +67,10 @@ defmodule GenReportElixir do
     Enum.into(2016..2020, %{}, fn year -> {year, 0} end)
   end
 
-  defp build_report(all_hours, hours_per_month, hours_per_year), do: %{"all_hours" => all_hours, "hours_per_month" => hours_per_month, "hours_per_year" => hours_per_year}
+  defp build_report(all_hours, hours_per_month, hours_per_year),
+    do: %{
+      "all_hours" => all_hours,
+      "hours_per_month" => hours_per_month,
+      "hours_per_year" => hours_per_year
+    }
 end
