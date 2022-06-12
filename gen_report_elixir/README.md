@@ -57,3 +57,10 @@ O relatório gerado a partir do arquivo (que está disponível para download log
     }
 }
 ```
+
+## Comandos
+
+```bash
+$ GenReportElixir.build("gen_report.csv")
+$ GenReportElixir.build("gen_report_test.csv")
+```
