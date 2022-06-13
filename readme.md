@@ -62,3 +62,7 @@ $ mix credo gen.config
 
 - Lendo arquivo (`event_loop`) "gen_report.csv" => 69.442ms
 - Lendo arquivos (`event_loop`) "part_1.csv", "part_2.csv", "part_3.csv" => 87.607ms
+
+**Python**
+
+- Lendo arquivo "gen_report.csv" => 744.099ms

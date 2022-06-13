@@ -2,7 +2,7 @@ import time
 import pandas as pd
 
 
-file_complete = "report_complete.csv"
+file_complete = "../report_complete.csv"
 available_users = [i + 1 for i in range(30)]
 available_foods = ["açaí", "churrasco", "esfirra", "hambúrguer", "pastel", "pizza", "prato_feito", "sushi"]
 
