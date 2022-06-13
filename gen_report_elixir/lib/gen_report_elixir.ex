@@ -32,7 +32,7 @@ defmodule GenReportElixir do
     all_hours = Map.put(all_hours, name, all_hours[name] + hours)
 
     month = Enum.at(@months, month - 1)
-    months = Map.put(hours_per_month[name], month, hours_per_month[name][month] + 1)
+    months = Map.put(hours_per_month[name], month, hours_per_month[name][month] + hours)
     hours_per_month = Map.put(hours_per_month, name, months)
 
     years = Map.put(hours_per_year[name], year, hours_per_year[name][year] + hours)

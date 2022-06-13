@@ -1,7 +1,7 @@
 defmodule ReportsGeneratorElixir.ParserTest do
   use ExUnit.Case
 
-  alias ReportsGenerator.Parser
+  alias ReportsGeneratorElixir.Parser
 
   describe "parser_file/1" do
     test "parser the file" do

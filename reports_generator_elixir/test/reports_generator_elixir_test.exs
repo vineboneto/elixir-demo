@@ -4,7 +4,7 @@ defmodule ReportsGeneratorElixirTest do
   describe "build\1" do
     test "builds the report" do
       file_name = "report_test.csv"
-      response = ReportsGenerator.build(file_name)
+      response = ReportsGeneratorElixir.build(file_name)
 
       expected_response = %{
         "foods" => %{
