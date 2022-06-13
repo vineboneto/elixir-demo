@@ -55,4 +55,5 @@ $ mix credo gen.config
 
 **Elixir**
 
--- Lendo arquivo "gen_report.csv" => 104.448ms
+- Lendo arquivo "gen_report.csv" => 104.448ms
+- Lendo arquivos (`multithread`) "part_1.csv", "part_2.csv", "part_3.csv" 28.262ms

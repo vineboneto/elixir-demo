@@ -16,9 +16,67 @@ defmodule GenReportElixir do
     "dezembro"
   ]
 
+  @available_person [
+    "cleiton",
+    "daniele",
+    "danilo",
+    "diego",
+    "giuliano",
+    "jakeliny",
+    "joseph",
+    "mayk",
+    "rafael",
+    "vinicius"
+  ]
+
   def build(filename) do
-    lines = Parser.parser_file(filename)
-    Enum.reduce(lines, report_acc(lines), fn line, report -> sum_values(line, report) end)
+    filename
+    |> Parser.parser_file()
+    |> Enum.reduce(report_acc(), fn line, report -> sum_values(line, report) end)
+  end
+
+  def build_from_many(filenames) do
+    filenames
+    |> Task.async_stream(fn filename -> build(filename) end)
+    |> Enum.reduce(report_acc(), fn {:ok, result}, report ->
+      sum_reports(report, result)
+    end)
+  end
+
+  def find_unique_name(filename) do
+    filename
+    |> Parser.parser_file()
+    |> Enum.map(fn [name, _hours, _day, _month, _year] -> name end)
+    |> Enum.uniq()
+  end
+
+  defp sum_reports(
+         %{
+           "all_hours" => all_hours1,
+           "hours_per_month" => hours_per_month1,
+           "hours_per_year" => hours_per_year1
+         },
+         %{
+           "all_hours" => all_hours2,
+           "hours_per_month" => hours_per_month2,
+           "hours_per_year" => hours_per_year2
+         }
+       ) do
+    all_hours = merge_maps(all_hours1, all_hours2)
+    hours_per_month = merge_map_n(hours_per_month1, hours_per_month2)
+    hours_per_year = merge_map_n(hours_per_year1, hours_per_year2)
+
+    build_report(all_hours, hours_per_month, hours_per_year)
+  end
+
+  defp merge_map_n(map1, map2) do
+    Map.merge(map1, map2, fn _k, value1, value2 ->
+      merge_maps(value1, value2)
+    end)
+  end
+
+  defp merge_maps(map1, map2) do
+    Map.merge(map1, map2, fn _key, value1, value2 -> value1 + value2 end)
   end
 
   defp sum_values(
@@ -44,19 +102,12 @@ defmodule GenReportElixir do
     |> Map.put("hours_per_year", hours_per_year)
   end
 
-  defp report_acc(lines) do
-    names = find_unique_name(lines)
-    all_hours = Enum.into(names, %{}, fn elem -> {elem, 0} end)
-    hours_per_month = Enum.into(names, %{}, fn elem -> {elem, build_month()} end)
-    hours_per_year = Enum.into(names, %{}, fn elem -> {elem, build_year()} end)
+  defp report_acc() do
+    all_hours = Enum.into(@available_person, %{}, fn elem -> {elem, 0} end)
+    hours_per_month = Enum.into(@available_person, %{}, fn elem -> {elem, build_month()} end)
+    hours_per_year = Enum.into(@available_person, %{}, fn elem -> {elem, build_year()} end)
 
     build_report(all_hours, hours_per_month, hours_per_year)
-  end
-
-  defp find_unique_name(lines) do
-    lines
-    |> Enum.map(fn [name, _hours, _day, _month, _year] -> name end)
-    |> Enum.uniq()
   end
 
   defp build_month() do
