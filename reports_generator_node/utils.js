@@ -6,7 +6,7 @@ function sumFoods(dataset, foods) {
       }
       return prev
     }, 0)
-    return { food, sum }
+    return { [food]: sum }
   })
 }
 
@@ -18,7 +18,7 @@ function sumUsers(dataset, users) {
       }
       return prev
     }, 0)
-    return { id, sum }
+    return { [id]: sum }
   })
 }
 

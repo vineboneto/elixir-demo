@@ -10,8 +10,7 @@ const setup = {
 }
 
 function display(users, foods) {
-  console.log(users)
-  console.log(foods)
+  console.log({ users, foods })
 }
 
 async function mainReportCompleted() {
