@@ -6,9 +6,9 @@ defmodule Exlivery.Orders.Item do
 
   defstruct @keys
 
-  def build(description, category, unit_price, quantity)
-      when quantity > 0 and category in @categories do
-    unit_price
+  def build(description, category, unity_price, quantity)
+      when quantity > 0 and unity_price > 0 and category in @categories do
+    unity_price
     |> Decimal.cast()
     |> build_item(description, category, quantity)
   end
