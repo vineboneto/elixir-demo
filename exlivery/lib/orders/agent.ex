@@ -13,6 +13,10 @@ defmodule Exlivery.Orders.Agent do
     {:ok, uuid}
   end
 
+  def list_all do
+    Agent.get(__MODULE__, fn state -> state end)
+  end
+
   def get(uuid) do
     Agent.get(__MODULE__, fn state -> get_order(state, uuid) end)
   end
