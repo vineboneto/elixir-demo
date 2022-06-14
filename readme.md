@@ -23,6 +23,9 @@ $ mix test
 ```shell
 # gera arquivo de config do credo
 $ mix credo gen.config
+
+# Recompilar
+$ recompile
 ```
 
 ## Medição de tempo de execução calculo de tempo em elixir
