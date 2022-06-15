@@ -4,7 +4,7 @@ defmodule Explane.Users.User do
 
   defstruct @keys
 
-  def build(name, email, cpf) do
+  def build(name, email, cpf) when is_bitstring(cpf) do
     {:ok,
      %__MODULE__{
        name: name,
@@ -13,11 +13,7 @@ defmodule Explane.Users.User do
      }}
   end
 
-  def build(_name, _email) do
-    {:error, "Invalid parameters"}
-  end
-
-  def build(_name) do
+  def build(_name, _email, _cpf) do
     {:error, "Invalid parameters"}
   end
 end

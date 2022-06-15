@@ -15,7 +15,7 @@ defmodule Explane.Users.UserTest do
     end
 
     test "when there are invalid params, returns an error" do
-      response = User.build("vinicius jn", "vineboneto@gmail.com")
+      response = User.build("vinicius jn", "vineboneto@gmail.com", 123)
 
       expected_response = {:error, "Invalid parameters"}
 
