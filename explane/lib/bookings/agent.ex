@@ -27,4 +27,8 @@ defmodule Explane.Bookings.Agent do
       booking -> {:ok, booking}
     end
   end
+
+  def list_all do
+    Agent.get(__MODULE__, fn state -> state end)
+  end
 end
