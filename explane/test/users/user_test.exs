@@ -5,7 +5,7 @@ defmodule Explane.Users.UserTest do
 
   import Explane.Factory
 
-  describe "build/4" do
+  describe "build/3" do
     test "when all params are valid, returns the user" do
       response = User.build("vinicius", "vineboneto@gmail.com", "12345")
 
