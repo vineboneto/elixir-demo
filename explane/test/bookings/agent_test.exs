@@ -1,49 +1,49 @@
-# defmodule Explane.Users.AgentTest do
-#   use ExUnit.Case
+defmodule Explane.Booking.AgentTest do
+  use ExUnit.Case
 
-#   alias Explane.Users.Agent, as: UserAgent
+  alias Explane.Bookings.Agent, as: BookingAgent
 
-#   import Explane.Factory
+  import Explane.Factory
 
-#   describe "save/1" do
-#     setup do
-#       UserAgent.start_link(%{})
+  describe "save/1" do
+    setup do
+      BookingAgent.start_link(%{})
 
-#       :ok
-#     end
+      :ok
+    end
 
-#     test "saves the user" do
-#       user = build(:user)
+    test "saves the booking" do
+      booking = build(:booking)
 
-#       assert {:ok, _uuid} = UserAgent.save(user)
-#     end
-#   end
+      assert {:ok, _uuid} = BookingAgent.save(booking)
+    end
+  end
 
-#   describe "get/1" do
-#     setup do
-#       UserAgent.start_link(%{})
+  describe "get/1" do
+    setup do
+      BookingAgent.start_link(%{})
 
-#       :ok
-#     end
+      :ok
+    end
 
-#     test "when user is found, returns the user" do
-#       user = build(:user)
+    test "when booking is found, returns the user" do
+      booking = build(:booking)
 
-#       {:ok, uuid} = UserAgent.save(user)
+      {:ok, uuid} = BookingAgent.save(booking)
 
-#       response = UserAgent.get(uuid)
+      response = BookingAgent.get(uuid)
 
-#       expected_response = {:ok, user}
+      expected_response = {:ok, booking}
 
-#       assert response == expected_response
-#     end
+      assert response == expected_response
+    end
 
-#     test "when the user is not found, returns an error" do
-#       response = UserAgent.get("00000")
+    test "when the booking is not found, returns an error" do
+      response = BookingAgent.get("00000")
 
-#       expected_response = {:error, "User not found"}
+      expected_response = {:error, "Booking not found"}
 
-#       assert response == expected_response
-#     end
-#   end
-# end
+      assert response == expected_response
+    end
+  end
+end
